@@ -1,6 +1,7 @@
 package app.servicios;
 
 
+import app.servicios.controllers.CiudadanoController;
 import app.servicios.controllers.UsuarioController;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
@@ -17,5 +18,12 @@ public class Main {
 
         // Rutas POST para manejar los formularios
         app.post("/api/usuarios", UsuarioController::guardarUsuario);
+
+        app.post("/api/ciudadanos", CiudadanoController::guardarCiudadano);
+
+        //Rutas get
+        app.get("/ciudadano", ctx -> {
+            ctx.redirect("/ciudadano.html");
+        });
     }
 }

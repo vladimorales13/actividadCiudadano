@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alta de Ciudadano</title>
+
+    <!-- Guía de estilos del Gobierno de México (V3) que ya incluye Bootstrap 3 -->
+    <link href="https://framework-gb.cdn.gob.mx/gm/v3/assets/styles/main.css" rel="stylesheet">
+    
+    <style>
+        /* Sub-menú secundario (color guinda oscuro) */
+        .sub-menu-institucional {
+            background-color: #4A1523;
+            padding: 10px 0;
+        }
+        .sub-menu-institucional ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+        }
+        .sub-menu-institucional a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .sub-menu-institucional a:hover {
+            color: #D4C19C; /* Color dorado al pasar el cursor */
+        }
+
+        /* Estilo específico para replicar la tipografía "Patria" del título */
+        .titulo-patria {
+            font-family: "Lora", "Times New Roman", serif;
+            color: #12322b; /* Verde oscuro institucional */
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+        
+        /* Ajustes menores de espaciado para el formulario */
+        .form-section {
+            margin-bottom: 60px;
+        }
+        
+        /* Separación para los botones */
+        .acciones-formulario {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- El script gobmx.js inyectará el encabezado principal automáticamente ARRIBA de este elemento -->
+    <div class="sub-menu-institucional">
+        <div class="container">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Requisitos</a></li>
+                <li><a href="#">Ubicación de oficina</a></li>
+                <li><a href="#">Contacto o citas</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="container form-section">
+        <h2 class="titulo-patria">Alta de Ciudadano</h2>
+
+        <form action="/api/ciudadanos" method="POST" id="altaCiudadanoForm">
+            <!-- Fila 1: Nombre y Apellidos -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="nombre">Nombre(s) *</label>
+                        <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Ingresa nombre(s)" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="apellidos">Apellidos *</label>
+                        <input class="form-control" id="apellidos" name="apellidos" type="text" placeholder="Ingresa los apellidos" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila 2: CURP y Correo -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="curp">CURP *</label>
+                        <input class="form-control" id="curp" type="text" name="curp" placeholder="18 CARACTERES" maxlength="18" style="text-transform: uppercase;" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="correo">Correo electrónico *</label>
+                        <input class="form-control" id="correo" type="email" name="correo" placeholder="ejemplo@correo.com" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila 3: Teléfono y Tipo de Sangre -->
+
+            <!-- Fila 4: Dirección -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label" for="direccion">Dirección completa *</label>
+                        <input class="form-control" id="direccion" type="text" name="direccion" placeholder="Calle, Número, Colonia, C.P., Municipio, Estado" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila 5: Botones de Acción -->
+            <div class="row acciones-formulario">
+                <div class="col-md-12">
+                    <!-- class="pull-right" flota los elementos a la derecha, clearfix evita que se desborden de su fila -->
+                    <div class="pull-right">
+                        <!-- El framework de gob.mx le da estilo automáticamente a btn-default y btn-primary -->
+                        <button type="reset" class="btn btn-default">Limpiar formulario</button>
+                        <button type="submit" class="btn btn-primary">Guardar Ciudadano</button>
+                    </div>
+                    <div class="clearfix"></div> 
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- Script del Gobierno de México que arma el header global automáticamente -->
+    <script src="https://framework-gb.cdn.gob.mx/gm/v3/assets/js/gobmx.js"></script>
+</body>
+</html>

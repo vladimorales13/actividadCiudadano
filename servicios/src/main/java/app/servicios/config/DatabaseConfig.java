@@ -17,7 +17,10 @@ public class DatabaseConfig {
     public static void initDb() {
         try (Connection conn = getConnection()) {
             String sql = "CREATE TABLE IF NOT EXISTS usuarios (id SERIAL PRIMARY KEY, nombre VARCHAR(100), email VARCHAR(100))";
+            String sql2 = "CREATE TABLE IF NOT EXISTS ciudadanos (id SERIAL PRIMARY KEY, nombre VARCHAR(100),"+
+             "apellidos varchar(100), curp varchar(25), correo VARCHAR(100), telefono varchar(15), direccion varchar(100))";
             conn.createStatement().execute(sql);
+            conn.createStatement().execute(sql2);
         } catch (SQLException e) {
             e.printStackTrace();
         }
